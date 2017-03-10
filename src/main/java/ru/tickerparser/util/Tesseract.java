@@ -43,6 +43,7 @@ public class Tesseract {
 
         lept.PIXA pixa = null;
         lept.BOXA boxa = api.GetWords(pixa);
+        //lept.pixSetTextline(image, null, "TEST", 20, 100, 100, null, (int[])null);
         return lept.pixDrawBoxa(image, boxa, 1, 0);
 
     }

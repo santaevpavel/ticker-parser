@@ -14,7 +14,8 @@ import java.util.List;
 public class TessdataUtil {
     private static final String TESSFOLDER = "tessdata";
     private static final String TESSDATA_EXTENTION = ".traineddata";
-    private static final String JAR_ROOT = "/BOOT-INF/classes/";
+    //private static final String JAR_ROOT = "/BOOT-INF/classes/";
+    private static final String JAR_ROOT = "/";
 
     private static final List<String> langs = Arrays.asList("rus");
 

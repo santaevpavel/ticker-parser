@@ -25,16 +25,21 @@ public class OcrController {
         final Tesseract tesseract = new Tesseract("rus");
 
         lept.PIX pixOut = tesseract.ocrWords(pix);
+        String ocrText = tesseract.ocr(pix);
         lept.pixWrite("out.png", pixOut, lept.IFF_PNG);
         pix.deallocate();
         pixOut.deallocate();
         tesseract.release();
-        return "OK";
+        return "OK\n+" + ocrText;
     }
 
     @GetMapping(path = "/recognize", produces = MediaType.IMAGE_PNG_VALUE)
-    public FileSystemResource ocr(HttpServletResponse response) throws IOException {
-        //response.setContentType("image/png");
+    public FileSystemResource getOutImage(HttpServletResponse response) throws IOException {
+        return new FileSystemResource("out.png");
+    }
+
+    @GetMapping(path = "/recognize/text", produces = MediaType.TEXT_PLAIN_VALUE)
+    public FileSystemResource getOutText(HttpServletResponse response) throws IOException {
         return new FileSystemResource("out.png");
     }
 
